@@ -67,31 +67,74 @@
 
 ```toml
 [package]
-name = "VSCode"										# 包名
-version = "1.46.0"									# 版本
-repository = { url = "http://example.com" }			# 仓库
-authors = [											# 作者
-  "Oxygen <mozaisoft@foxmail.com>",
+# 包名
+name = "VSCode"										
+#资源类型，可取Application/Library/Driver/Theme
+type = "Application"								
+# 版本
+version = "1.46.0"					
+# 分类
+category = "办公编辑"				
+# 作者
+authors = [											
+  "Oxygen <edgeless_dev_id>",
   "Microsoft"
 ]
-contributors = ["Fir <unknown>"]					# 贡献者
-compat = [">= 4.0.0"]								# 兼容的 Edgeless 版本
+# 兼容的 Edgeless 版本
+compat = [">= 4.0.0"]								
+# 手动制作？（相对于使用CI或bot）
+manual = true								        
 
-[scripts]											# 脚本
-build = "./build.cmd"
+# 配置流程
+[workflow]											
+  [workflow.setup]
+  name = "Run setup batch"
+  type = "Script"
+  path = "./setup.cmd"
+  use = ["SETUP_PLUGINS"]
 
-[scripts.onBeforeShell]								
-path = "$SETUP_PATH/autorun.cmd"					# 脚本路径
+  [workflow.link]
+  name = "Create shortcut"
+  type = "Link"
+  source_file = "./VSCode/VSCode.exe"
+  target_name = "Visual Studio Code"
+  target_args = "$env.USER_ARGS"
+  target_icon = "./VSCode/scode.ico"
 
-[ppnp]												# Edgeless PPnP 配置
-precache = [										# 预缓存配置
+  [workflow.open]
+  name = "Open vscode"
+  type = "Open"
+  path = "$DESKTOP_PATH/Visual Studio Code.lnk"
+
+  [workflow.log]
+  name = "Log"
+  type = "Command"
+  path = "echo VSCode installed successfully >>X:\\Users\\Log.txt"
+
+#钩子配置
+[hooks.onBefore]								
+run = "$SETUP_PATH/autorun.cmd"
+
+# Edgeless PPnP 配置
+[ppnp]									
+precache = [										
   "_install_/*/**"
 ]
 
-[dependencies]										# 依赖
-electronjs = "11.0.0"
-nodejs = "14.16.0"
+#环境变量，可以在此文件中或批处理环境中使用
+[environment]                                       
+USER_ARGS = "--help"
+SETUP_PLUGINS = "['Code Runner','Simplified Chinese']"
 
+#用户数据文件夹，用于用户数据恢复
+[profiles]
+dir = ["X:\\Users\\profiles"]
+
+# 依赖
+[dependencies]										
+dotnet = "4.0.0"
+vc = "^1.0.0"
+_others = ["VMTools"]
 ```
 
 
