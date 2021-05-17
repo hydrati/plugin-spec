@@ -75,9 +75,11 @@ name = "VSCode"
 #资源类型
 type = 0								
 # 版本
-version = "1.46.0"					
+version = "1.46.0"		
+# 分类
+category = "办公编辑"			
 # 标签
-tags = ["办公编辑"]				
+tags = ["Visual Studio Code","VSC"]				
 # 作者
 authors = [											
   "Oxygen <edgeless_dev_id or email>",
