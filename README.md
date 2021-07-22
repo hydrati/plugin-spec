@@ -138,6 +138,14 @@ dir = ["X:\\Users\\profiles"]
 dotnet = "4.0.0"
 vc = "^1.0.0"
 VMTools = "latest"
+
+# 以下为自定义配置，根据资源包类型填写
+
+# 驱动资源包
+[driver]
+brand = "Intel"
+type = "无线网卡"
+models = ["AX200","AX201"]
 ```
 
 
