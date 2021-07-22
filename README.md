@@ -132,6 +132,12 @@ SETUP_PLUGINS = "['Code Runner','Simplified Chinese']"
 #用户数据文件夹，用于用户数据恢复
 [profiles]
 dir = ["X:\\Users\\profiles"]
+	
+#服务配置
+[service]
+enable = "%ProgramFiles\\Edgeless\\VSCode\\code.exe"
+start = "%ProgramFiles\\Edgeless\\VSCode\\code.exe"
+stop = "taskkill /im code.exe /t"
 
 # 依赖
 [dependencies]										
