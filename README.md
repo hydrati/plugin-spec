@@ -86,7 +86,9 @@ authors = [
   "Microsoft"
 ]
 # 兼容的 Edgeless 版本
-compat = [">= 4.0.0"]						        
+Edgeless_compat = [">= 4.0.0"]
+# 测试通过的 Edgeless 版本
+Edgeless_tested = ["4.0.0","3.2.1"]
 
 # 配置流程
 [workflow]											
@@ -103,6 +105,8 @@ compat = [">= 4.0.0"]
   target_name = "Visual Studio Code"
   target_args = "$env.USER_ARGS"
   target_icon = "./VSCode/scode.ico"
+  # 默认链接到桌面，允许用户自选位置桌面/开始菜单/任务栏
+  default_position = "Desktop"
 
   [workflow.open]
   name = "Open vscode"
