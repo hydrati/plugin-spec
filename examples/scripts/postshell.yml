@@ -1,0 +1,22 @@
+name: postshell
+
+main: 
+  - name: Create Shortcut
+    use: "builtin/create_link"
+    with:
+      name: Firefox
+      source: "${{el.cwd}}/Firefox.exe"
+      at: "Desktop"
+
+  - name: Wait
+    use: "builtin/pecmd"
+    with:
+      command: WAIT
+      params: ["3000"]
+  
+  - name: Log
+    log: "created"
+
+  - name: test
+    level: debug
+    log: "hello"

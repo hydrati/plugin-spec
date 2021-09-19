@@ -1,0 +1,21 @@
+name: loaded
+
+log-success: &log-success
+  - name: Log
+    log: Firefox installed.
+
+main:
+  - name: Run Setup
+    run: "${{el.cwd}}/setup.cmd"
+    with: 
+      onsuccess: *log-success
+
+  - name: "test"
+    if: "el.env.debug" # if expr
+    ok: 
+      cmd: |
+        @echo off
+        echo. Hello, workflow!
+        exit /b 0
+    else:
+      # nothing

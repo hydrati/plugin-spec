@@ -1,0 +1,41 @@
+name: "Firefox"
+type: 0
+version: 91.0.2.0
+
+edgeless:
+  description: "一个由Mozilla开发的自由及开放源代码的网页浏览器。"
+  tags: 
+    - "Firefox"
+    - "Browser"
+    - "浏览器"
+  authors:
+    - "Cno [bot]"
+    - "Mozilla"
+  category: "浏览器"
+  compatible:
+    - ">= 4.0.0"
+  tested:
+    - "4.0.0"
+
+dependencies:
+  .NET Core: "3"
+  VC: "^1.0.0"
+  VMTools: "latest"
+
+workflows:
+  env:  # Local Env, only workflow & scripts
+    DEBUG: true # will to string
+  on:
+    loaded: "./scripts/loaded.yml"
+    postshell: "./scripts/postshell.yml"  
+
+global:
+  env:
+    FIREFOX_TEST: "Test"
+    DEFAULT_BROWSER: "Firefox"
+  path:  # ${{...}} is expression
+    - "${{el.cwd}}/Firefox"
+    - "${{el.cwd}}/Firefox/bin"
+
+
+
