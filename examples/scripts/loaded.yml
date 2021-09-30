@@ -6,13 +6,13 @@ log-success: &log-success
 
 main:
   - name: Run Setup
-    run: "${{el.cwd}}/setup.cmd"
+    run: "${el.cwd}/setup.cmd"
     with: 
       onsuccess: *log-success
 
   - name: "test"
     if: "el.env.debug" # if expr
-    ok: 
+    then: 
       cmd: |
         @echo off
         echo. Hello, workflow!

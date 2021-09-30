@@ -26,6 +26,9 @@ workflows:
   env:  # Local Env, only workflow & scripts
     DEBUG: true # will to string
   on:
+    # event: path
+    # if path has no extension name
+    # loader will find `path +".yml"|".bat"|".cmd"|".wcs"` (by priority)
     loaded: "./scripts/loaded.yml"
     postshell: "./scripts/postshell.yml"  
 
@@ -33,9 +36,9 @@ global:
   env:
     FIREFOX_TEST: "Test"
     DEFAULT_BROWSER: "Firefox"
-  path:  # ${{...}} is expression
-    - "${{el.cwd}}/Firefox"
-    - "${{el.cwd}}/Firefox/bin"
+  path:  # ${...} is expression
+    - "${el.cwd}/Firefox"
+    - "${el.cwd}/Firefox/bin"
 
 
 

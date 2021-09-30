@@ -1,0 +1,44 @@
+name = "Firefox"
+type = 0
+version = "91.0.2.0"
+
+[edgeless]
+description = "Firefox"
+tags = [
+  "Firefox",
+  "Browser",
+  "浏览器"
+]
+authors = [
+  "Cno [bot]",
+  "Mozilla"
+]
+category = "浏览器"
+compatible = [">= 4.0.0"]
+tested = ["4.0.0"]
+
+[dependencies]
+".NET Core" = "3.0.0"
+VC = "^1.0.0"
+VMTools = "latest"
+
+[workflows]
+  [workflows.env]
+  DEBUG = true
+
+  [workflows.on]
+  # event name = path
+  # if path has no extension name
+  # loader will find `path +".yml"|".bat"|".cmd"|".wcs"` (by priority)
+  loaded = "./scripts/loaded.yml"
+  postshell = "./scripts/postshell.yml"
+
+[global]
+  path = [
+    "${el.cwd}/Firefox",
+    "${el.cwd}/Firefox/bin"
+  ]
+
+  [global.env]
+  FIREFOX_TEST = "Test"
+  DEFAULT_BROWSER = "Firefox"

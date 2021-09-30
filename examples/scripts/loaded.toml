@@ -1,0 +1,23 @@
+name = "loaded"
+
+[[log-success]]
+name = "Log"
+log = "Firefox installed."
+
+[[main]]
+name = "Run Setup"
+run = "${el.cwd}/setup.cmd"
+  [main.with]
+  onsuccess = [
+    { goto = "log-success" }
+  ]
+
+[[main]]
+name = "Test"
+if = "el.env.debug"
+  [[main.then]]
+  cmd = """
+  @echo off
+  echo. Hello, flow!
+  exit /b 0
+  """

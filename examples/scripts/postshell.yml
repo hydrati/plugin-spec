@@ -5,7 +5,7 @@ main:
     use: "builtin/create_link"
     with:
       name: Firefox
-      source: "${{el.cwd}}/Firefox.exe"
+      source: "${el.cwd}/Firefox.exe"
       at: "Desktop"
 
   - name: Wait

@@ -1,0 +1,32 @@
+# 任务是工作流中的最大执行单位。
+# 这是一个最基本的工作流任务。
+
+# 工作流名称
+name: example
+
+# 在任务中，有一个或多个步骤组
+
+# 步骤组 `main`
+main:  
+  # 步骤组包含多个步骤
+
+  # 这是步骤，工作流中最小的执行单位
+  # 每个步骤代表一个操作
+
+  - # 步骤名
+    name: Create Shortcut
+
+    # 外部步骤调用
+    # `builtin/create_link`为内置的快捷方式创建工具
+    use: "builtin/create_link"
+
+    # 外部步骤调用参数
+    with:
+      name: Firefox
+      source: "${el.cwd}/Firefox.exe"
+      at: "Desktop"
+
+  - name: Log
+    use: "builtin/log"
+    with: 
+      log: "Hello, world"

@@ -1,0 +1,26 @@
+# !TODO
+
+# 工作流名称
+name: example
+
+# 在任务中，有一个或多个步骤组
+
+# 步骤组 `main`
+main:  
+  - # 步骤名
+    name: Create Shortcut
+
+    # 外部步骤调用
+    # `builtin/create_link`为内置的快捷方式创建工具
+    use: "builtin/create_link"
+
+    # 外部步骤调用参数
+    with:
+      name: Firefox
+      source: "${el.cwd}/Firefox.exe"
+      at: "Desktop"
+
+  - name: Log
+    use: "builtin/log"
+    with: 
+      log: "Hello, world"
